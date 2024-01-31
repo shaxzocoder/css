@@ -1,0 +1,59 @@
+html {
+  cursor: none;
+    overflow: hidden;
+  }
+  
+  body {
+    margin: 0;
+    min-block-size: 100svh;
+    background: black;
+  
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+    }
+  }
+  
+  .cursor {
+    &::before {
+      content: "";
+      position: absolute;
+      left: var(--x, 0px);
+      top: var(--y, 0px);
+      translate: -50% -50%;
+      width: 200px;
+      aspect-ratio: 1;
+      background: white;
+      border-radius: 100vw;
+      filter: blur(2rem);
+    }
+  
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle, lime, transparent 30%),
+        conic-gradient(
+          red,
+          blue,
+          green,
+          yellow,
+          purple,
+          magenta,
+          cyan,
+          yellow,
+          orangered,
+          red
+        );
+      mix-blend-mode: color-burn;
+      animation: rotateHue 30s linear;
+    }
+  }
+  
+  @keyframes rotateHue {
+    to {
+      filter: hue-rotate(360deg);
+    }
+  }
+  
